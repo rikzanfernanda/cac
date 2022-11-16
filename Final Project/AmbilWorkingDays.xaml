@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AmbilWorkingDays" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="691,1753" sap2010:WorkflowViewState.IdRef="AmbilWorkingDays_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AmbilWorkingDays" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="691,2106" sap2010:WorkflowViewState.IdRef="AmbilWorkingDays_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
       <x:String>System.Activities</x:String>
@@ -76,17 +76,18 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AmbilWorkingDays" sap:VirtualizedContainerService.HintSize="556,1688" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AmbilWorkingDays" sap:VirtualizedContainerService.HintSize="556,2041" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="pathTS" />
       <Variable x:TypeArguments="x:Int32" Name="totalWorkingDays" />
+      <Variable x:TypeArguments="x:Int32" Name="totalDays" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="514,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign Path File" sap:VirtualizedContainerService.HintSize="514,70" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[pathTS]</OutArgument>
       </Assign.To>
@@ -94,30 +95,42 @@
         <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles("D:\Project ICStar\Timesheet")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="514,1488" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[pathTS]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Item in Folder Path File" sap:VirtualizedContainerService.HintSize="514,1841" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[pathTS]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="pdfFilePath" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="478,1354" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="478,1707" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="hasilBacaPDFTemp" />
               <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="IENWorkingDays" />
               <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="IENTotalWorkingDays" />
               <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="IENTotalLeavesDays" />
-              <Variable x:TypeArguments="x:Int32" Name="totalDays" />
               <Variable x:TypeArguments="x:Int32" Default="0" Name="totalLeavesDay" />
+              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="IENname" />
+              <Variable x:TypeArguments="x:String" Name="name" />
+              <Variable x:TypeArguments="x:Object" Name="variable1" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[pdfFilePath]" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[hasilBacaPDFTemp]" />
-            <ui:Matches sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(Total|TOTAL|total)\s(Days|DAYS|days|Working|WORKING|working)\s([0-9]+|(Days|DAYS|days)\s:\s?[0-9]+)" RegexOption="IgnoreCase, Compiled" Result="[IENWorkingDays]" />
-            <ui:Matches sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[IENWorkingDays(0).Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENTotalWorkingDays]" />
-            <Assign sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read Timesheet PDF" FileName="[pdfFilePath]" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[hasilBacaPDFTemp]" />
+            <ui:Matches DisplayName="Matches Name" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_5" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(?&lt;=Name\s)(.*)(?=\sRole)" RegexOption="IgnoreCase, Compiled" Result="[IENname]" />
+            <Assign sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[IENname(0).Value]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="436,94" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[name]" />
+            <ui:Matches DisplayName="Matches Working Days" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(Total|TOTAL|total)\s(Days|DAYS|days|Working|WORKING|working)\s([0-9]+|(Days|DAYS|days)\s:\s?[0-9]+)" RegexOption="IgnoreCase, Compiled" Result="[IENWorkingDays]" />
+            <ui:Matches DisplayName="Matches Working Days" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[IENWorkingDays(0).Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENTotalWorkingDays]" />
+            <Assign DisplayName="Assign Working Days " sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[totalWorkingDays]</OutArgument>
               </Assign.To>
@@ -125,8 +138,8 @@
                 <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(IENTotalWorkingDays(0).Value)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:Matches sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(Total|TOTAL|total)\s(Leaves|Sicks|Absences)\s:\s?[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENTotalLeavesDays]" />
-            <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,403" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[IENTotalLeavesDays]">
+            <ui:Matches DisplayName="Matches Leaves Days" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(Total|TOTAL|total)\s(Leaves|Sicks|Absences)\s:\s?[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENTotalLeavesDays]" />
+            <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each Leaves Days in Timesheet" sap:VirtualizedContainerService.HintSize="436,403" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[IENTotalLeavesDays]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="str:Match">
                   <ActivityAction.Argument>
@@ -141,8 +154,8 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:Matches sap:VirtualizedContainerService.HintSize="358,69" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[leavesDay.Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENLeavesDays]" />
-                    <Assign sap:VirtualizedContainerService.HintSize="358,70" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <ui:Matches DisplayName="Matches Leaves Days" sap:VirtualizedContainerService.HintSize="358,69" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[leavesDay.Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENLeavesDays]" />
+                    <Assign DisplayName="Assign Leaves Days" sap:VirtualizedContainerService.HintSize="358,70" sap2010:WorkflowViewState.IdRef="Assign_4">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Int32">[totalLeavesDay]</OutArgument>
                       </Assign.To>
