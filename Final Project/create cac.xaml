@@ -231,7 +231,7 @@
         </ActivityAction>
       </ueab:ExcelProcessScopeX.Body>
     </ueab:ExcelProcessScopeX>
-    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="E:\ICStar Hackathon\final-project\berkas\CAC Document template.docx" sap:VirtualizedContainerService.HintSize="530,1852" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="E:\ICStar Hackathon\final-project\berkas\coba1\CAC Document template.docx" sap:VirtualizedContainerService.HintSize="530,1852" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
       <p:WordApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WordDocument">
           <ActivityAction.Argument>
@@ -250,7 +250,7 @@
             <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="WordReplaceText_5" Replace="[usage]" ReplaceAll="True" Search="{}{usage}" />
             <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="WordReplaceText_6" Replace="[balance]" ReplaceAll="True" Search="{}{balance}" />
             <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="WordReplaceText_7" Replace="[grValue]" ReplaceAll="True" Search="{}{gr_value}" />
-            <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="E:\ICStar Hackathon\final-project\berkas\CAC Document.pdf" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
+            <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="E:\ICStar Hackathon\final-project\berkas\coba1\CAC.pdf" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
           </Sequence>
         </ActivityAction>
       </p:WordApplicationScope.Body>
