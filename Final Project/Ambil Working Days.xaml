@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="AmbilWorkingDays" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="karyawan" Type="OutArgument(scg:Dictionary(x:String, s:Tuple(x:Int32, x:Int32)))" />
+    <x:Property Name="pathTimesheet" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>691,2019</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>661,2019</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AmbilWorkingDays_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -151,7 +152,7 @@
               <OutArgument x:TypeArguments="s:String[]">[pathTS]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles("Data Project ICStar\Timesheet")]</InArgument>
+              <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(pathTimesheet)]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -251,7 +252,7 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <Assign DisplayName="Assign Data to Karyawan" sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign DisplayName="Assign Data to Karyawan" sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:Tuple(x:Int32, x:Int32)">[karyawan(name)]</OutArgument>
               </Assign.To>
