@@ -1,12 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CalculateUsageMonth" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CalculateUsageMonth" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="nomorPO" Type="OutArgument(x:String)" />
+    <x:Property Name="nomorPO" Type="InOutArgument(x:String)" />
     <x:Property Name="pathPoFile" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>661,1448</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>842,2042</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CalculateUsageMonth_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -45,6 +45,11 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>UiPath.DocumentUnderstanding.Digitizer.Utils</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -104,6 +109,11 @@
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.OmniPage.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.Digitizer</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -112,7 +122,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="CalculateUsageMonth" sap:VirtualizedContainerService.HintSize="482,1383" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CalculateUsageMonth" sap:VirtualizedContainerService.HintSize="852,1977" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="dokumenPO" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="IENdokumenPO" />
@@ -123,15 +133,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="440,1293" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="810,1887" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,487" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="772,1081" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[pathPoFile]" sap:VirtualizedContainerService.HintSize="358,69" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[dokumenPO]">
+          <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[pathPoFile]" sap:VirtualizedContainerService.HintSize="730,69" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[dokumenPO]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -139,9 +149,37 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ReadPDFText>
-          <ui:Matches sap:VirtualizedContainerService.HintSize="358,69" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[dokumenPO]" IsBuilderTabModified="False" Pattern="(PO|po)\s(NUMBER|number|Number)\s[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENdokumenPO]" />
-          <ui:Matches sap:VirtualizedContainerService.HintSize="358,69" sap2010:WorkflowViewState.IdRef="Matches_5" Input="[IENdokumenPO(0).Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENnomorPO]" />
-          <Assign sap:VirtualizedContainerService.HintSize="358,70" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <ui:Matches sap:VirtualizedContainerService.HintSize="730,69" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[dokumenPO]" IsBuilderTabModified="False" Pattern="(PO|po)\s(NUMBER|number|Number)\s[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENdokumenPO]" />
+          <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="730,554" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+            <ui:IfElseIf.ConditionBlocks>
+              <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                <ui:IfElseIfBlock BlockType="If" Condition="[IENdokumenPO.Count &lt; 1]">
+                  <ui:IfElseIfBlock.Then>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,350" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR" FileName="[pathPoFile]" sap:VirtualizedContainerService.HintSize="358,151" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" ImageDpi="150" Range="All" Text="[dokumenPO]">
+                        <ui:ReadPDFWithOCR.OCREngine>
+                          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                            <ActivityFunc.Argument>
+                              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                            </ActivityFunc.Argument>
+                            <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="GoogleOCR_1" Image="[Image]" />
+                          </ActivityFunc>
+                        </ui:ReadPDFWithOCR.OCREngine>
+                      </ui:ReadPDFWithOCR>
+                      <ui:Matches sap:VirtualizedContainerService.HintSize="358,69" sap2010:WorkflowViewState.IdRef="Matches_6" Input="[dokumenPO]" IsBuilderTabModified="False" Pattern="(PO|po)\s(NUMBER|number|Number)\s[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENdokumenPO]" />
+                    </Sequence>
+                  </ui:IfElseIfBlock.Then>
+                </ui:IfElseIfBlock>
+              </sc:BindingList>
+            </ui:IfElseIf.ConditionBlocks>
+          </ui:IfElseIf>
+          <ui:Matches sap:VirtualizedContainerService.HintSize="730,69" sap2010:WorkflowViewState.IdRef="Matches_5" Input="[IENdokumenPO(0).Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENnomorPO]" />
+          <Assign sap:VirtualizedContainerService.HintSize="730,70" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[nomorPO]</OutArgument>
             </Assign.To>
@@ -152,24 +190,24 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="406,486" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:SystemException" sap:VirtualizedContainerService.HintSize="776,486" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ActivityAction x:TypeArguments="s:Exception">
+          <ActivityAction x:TypeArguments="s:SystemException">
             <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              <DelegateInArgument x:TypeArguments="s:SystemException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="400,417" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence sap:VirtualizedContainerService.HintSize="400,417" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="358,94" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Error occurred, please check PO file&quot;]" />
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="358,94" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Error occured, please check PO File and try again&quot;]" />
               <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[exception]" sap:VirtualizedContainerService.HintSize="358,193" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" />
             </Sequence>
           </ActivityAction>

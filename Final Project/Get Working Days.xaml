@@ -191,7 +191,7 @@
                 <InArgument x:TypeArguments="x:String">[IENname(0).Value]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:Matches DisplayName="Matches Working Days" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(Total|TOTAL|total)\s(Days|DAYS|days|Working|WORKING|working)\s([0-9]+|(Days|DAYS|days)\s:\s?[0-9]+)" RegexOption="IgnoreCase, Compiled" Result="[IENWorkingDays]" />
+            <ui:Matches DisplayName="Matches Working Days" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[hasilBacaPDFTemp]" IsBuilderTabModified="False" Pattern="(Total|TOTAL|total)\s(Days|DAYS|days|Working|WORKING|working)\s([0-9]+|(Days|DAYS|days)\s:(\s|\s\n)?[0-9]+)" RegexOption="IgnoreCase, Compiled" Result="[IENWorkingDays]" />
             <ui:Matches DisplayName="Matches Working Days" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[IENWorkingDays(0).Value]" IsBuilderTabModified="False" Pattern="[0-9]+" RegexOption="IgnoreCase, Compiled" Result="[IENTotalWorkingDays]" />
             <Assign DisplayName="Assign Working Days " sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
