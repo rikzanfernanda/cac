@@ -129,12 +129,8 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get PO Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="358,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Get PO Number.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InOutArgument x:TypeArguments="x:String" x:Key="nomorPO">
-                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="nomorPO" />
-              </InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="pathPoFile">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="pathPoFile" />
-              </InArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="nomorPO">[nomorPO]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="pathPoFile">[pathPoFile]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Calculate Usage for Month.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="358,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Calculate Usage for Month.xaml">
@@ -147,8 +143,15 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Create CAC Document.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="358,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Create CAC Document.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="pathDraftCac">[pathDraftCac]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="pathOutput">[pathOutput]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="pathDraftCac">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="pathDraftCac" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="pathOutput">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="pathOutput" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="nomorPO">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="nomorPO" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>

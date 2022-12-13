@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="pathDraftCac" Type="InArgument(x:String)" />
     <x:Property Name="pathOutput" Type="InArgument(x:String)" />
+    <x:Property Name="nomorPO" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -212,8 +213,8 @@
               </ActivityAction>
             </ueab:ExcelProcessScopeX.Body>
           </ueab:ExcelProcessScopeX>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[pathOutput]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="596,163" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data Template\CAC Document template.docx" />
-          <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[pathOutput + &quot;\CAC Document template.docx&quot;]" sap:VirtualizedContainerService.HintSize="596,2033" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[pathOutput + &quot;\CAC Document &quot;+ nomorPO +&quot;.docx&quot;]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="596,163" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data Template\CAC Document template.docx" />
+          <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[pathOutput + &quot;\CAC Document &quot;+ nomorPO +&quot;.docx&quot;]" sap:VirtualizedContainerService.HintSize="596,2033" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
             <p:WordApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WordDocument">
                 <ActivityAction.Argument>
@@ -233,7 +234,7 @@
                   <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="WordReplaceText_6" Replace="[balance]" ReplaceAll="True" Search="{}{balance}" />
                   <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="WordReplaceText_7" Replace="[grValue]" ReplaceAll="True" Search="{}{gr_value}" />
                   <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="WordReplaceText_8" Replace="[System.DateTime.Now.ToString(&quot;dd MMMM yyyy&quot;)]" ReplaceAll="True" Search="{}{date}" />
-                  <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[pathOutput + &quot;\CAC Document.pdf&quot;]" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
+                  <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[pathOutput + &quot;\CAC Document &quot;+ nomorPO+&quot;.pdf&quot;]" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
                 </Sequence>
               </ActivityAction>
             </p:WordApplicationScope.Body>
