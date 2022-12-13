@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>661,770</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>708,4857</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>create_cac_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="86">
@@ -113,7 +113,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="create_cac" sap:VirtualizedContainerService.HintSize="482,705" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="create_cac" sap:VirtualizedContainerService.HintSize="718,4792" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="poValue" />
       <Variable x:TypeArguments="x:String" Name="usage" />
@@ -130,7 +130,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="440,615" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="676,4702" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence sap:VirtualizedContainerService.HintSize="638,4465" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
@@ -212,7 +212,7 @@
               </ActivityAction>
             </ueab:ExcelProcessScopeX.Body>
           </ueab:ExcelProcessScopeX>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[pathOutput]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="596,163" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data Project ICStar\CAC Document template.docx" />
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[pathOutput]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="596,163" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data Template\CAC Document template.docx" />
           <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[pathOutput + &quot;\CAC Document template.docx&quot;]" sap:VirtualizedContainerService.HintSize="596,2033" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
             <p:WordApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WordDocument">
@@ -247,10 +247,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="406,443" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="642,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
